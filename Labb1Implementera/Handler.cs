@@ -17,9 +17,8 @@ namespace Labb1Implementera
             Console.WriteLine("----Welcome! What do you want to do today?----\r\n");
             Console.WriteLine("1) Withdraw Money");
             Console.WriteLine("2) Deposit Money");
-            Console.WriteLine("3) Check Saldo");
-            Console.WriteLine("4) Display credit card options");
-            Console.WriteLine("5) Exit");
+            Console.WriteLine("3) Display credit card options");
+            Console.WriteLine("4) Exit");
 
             Console.Write("\r\nYour choice: ");
 
@@ -28,7 +27,6 @@ namespace Labb1Implementera
                 case "1":
                     Console.Clear();
                     Withdraw();
-                    
                     return true;
                 case "2":
                     Console.Clear();
@@ -36,14 +34,9 @@ namespace Labb1Implementera
                     return true;
                 case "3":
                     Console.Clear();
-                    Console.WriteLine("Check Saldo");
-                    Console.ReadLine();
-                    return true;
-                case "4":
-                    Console.Clear();
                     DisplayAllCards();             
                     return true;
-                case "5":
+                case "4":
                     return false;
                 default:
                     return true;
@@ -52,6 +45,9 @@ namespace Labb1Implementera
 
         public static void DisplayAllCards()
         {
+            //Factory Method. Här displayar vi de olika korten för användaren.
+            Console.WriteLine("---Here are our different cards that we offer---\r\n");
+
             var creditCard = new VisaFactory().CreateCard();
             if (creditCard != null)
             {
@@ -97,6 +93,8 @@ namespace Labb1Implementera
 
         public static void Withdraw()
         {
+            //Strategy Pattern. Här använder vi oss av algoritmen som vi gjorde i 
+            //StrategyWithdraw.
             try
             {
                 Console.WriteLine("Please enter amount to withdraw: ");
@@ -115,6 +113,8 @@ namespace Labb1Implementera
 
         public static void Deposit()
         {
+            //Strategy Pattern. Här använder vi oss av algoritmen som vi gjorde i 
+            //StrategyWithdraw.
             try
             {
                 Console.WriteLine("Please enter amount to deposit: ");
@@ -126,15 +126,11 @@ namespace Labb1Implementera
             }
             catch (Exception)
             {
+                //Singleton Pattern. Vid felaktig inmatning skapas en instans av Singletonklassen och vi ropar på
+                //ErrorMessage som displayar felmeddelande.
                 Singleton.Instance.ErrorMessage();
                 Console.ReadLine();
             }
-            //Console.WriteLine("Please enter amount to deposit: ");
-            //decimal amount = Convert.ToDecimal(Console.ReadLine());
-            //var context = new StrategyContext();
-            //context.SetBalanceStrategy(new StrategyDeposit());
-            //context.AccountAction(amount);
-            //Console.ReadLine();
         }
     }
 }

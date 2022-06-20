@@ -10,6 +10,7 @@ namespace Labb1Implementera.Factories
 {
     public class AmericanExpressFactory : CreditCardFactory
     {
+        //Factory Method. Respektive kreditkort skapar sitt eget kort.
         protected override ICreditCard MakeCard()
         {
             ICreditCard card = new AmericanExpress();

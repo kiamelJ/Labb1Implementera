@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Labb1Implementera
 {
+    //Singleton Pattern. Vi har en sealed klass som vid instansiering
+    //displayar ett felmeddelande (används i en try-catch.)
+
     public sealed class Singleton
     {
         private static Singleton instance = null;

@@ -9,6 +9,7 @@ namespace Labb1Implementera
 {
     public class StrategyContext
     {
+        //Strategy Pattern. Här har vi en property som kommer att köras vid run-time och då den algoritm som krävs.
         private IStrategy BalanceStrategy;
 
         public void SetBalanceStrategy(IStrategy strategy)

@@ -8,6 +8,7 @@ namespace Labb1Implementera.Interfaces
 {
     public interface IStrategy
     {
+        //Strategy Pattern. Vi deklarerar en metod som vi använder olika algoritmer i beroende på klassen.
         void AccountAction(decimal a);
     }
 }
