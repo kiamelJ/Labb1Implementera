@@ -1,4 +1,5 @@
-﻿using Labb1Implementera.Factories;
+﻿using Labb1Implementera.ConcreteStrategies;
+using Labb1Implementera.Factories;
 using Labb1Implementera.Interface;
 using System;
 using System.Collections.Generic;
@@ -26,13 +27,12 @@ namespace Labb1Implementera
             {
                 case "1":
                     Console.Clear();
-                    Console.WriteLine("Withdraw Money");
-                    Console.ReadLine();
+                    Withdraw();
+                    
                     return true;
                 case "2":
                     Console.Clear();
-                    Console.WriteLine("Deposit Money");
-                    Console.ReadLine();
+                    Deposit();
                     return true;
                 case "3":
                     Console.Clear();
@@ -93,6 +93,26 @@ namespace Labb1Implementera
                 Console.WriteLine("Invalid card type");
                 Console.ReadLine();
             }
+        }
+
+        public static void Withdraw()
+        {
+            Console.WriteLine("Please enter amount to withdraw: ");
+            decimal amount = Convert.ToDecimal(Console.ReadLine());
+            var context = new StrategyContext();
+            context.SetBalanceStrategy(new StrategyWithdraw());
+            context.AccountAction(amount);
+            Console.ReadLine();
+        }
+
+        public static void Deposit()
+        {
+            Console.WriteLine("Please enter amount to deposit: ");
+            decimal amount = Convert.ToDecimal(Console.ReadLine());
+            var context = new StrategyContext();
+            context.SetBalanceStrategy(new StrategyDeposit());
+            context.AccountAction(amount);
+            Console.ReadLine();
         }
 
     }
