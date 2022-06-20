@@ -97,23 +97,44 @@ namespace Labb1Implementera
 
         public static void Withdraw()
         {
-            Console.WriteLine("Please enter amount to withdraw: ");
-            decimal amount = Convert.ToDecimal(Console.ReadLine());
-            var context = new StrategyContext();
-            context.SetBalanceStrategy(new StrategyWithdraw());
-            context.AccountAction(amount);
-            Console.ReadLine();
+            try
+            {
+                Console.WriteLine("Please enter amount to withdraw: ");
+                decimal amount = Convert.ToDecimal(Console.ReadLine());
+                var context = new StrategyContext();
+                context.SetBalanceStrategy(new StrategyWithdraw());
+                context.AccountAction(amount);
+                Console.ReadLine();
+            }
+            catch (Exception)
+            {
+                Singleton.Instance.ErrorMessage();
+                Console.ReadLine();
+            }          
         }
 
         public static void Deposit()
         {
-            Console.WriteLine("Please enter amount to deposit: ");
-            decimal amount = Convert.ToDecimal(Console.ReadLine());
-            var context = new StrategyContext();
-            context.SetBalanceStrategy(new StrategyDeposit());
-            context.AccountAction(amount);
-            Console.ReadLine();
+            try
+            {
+                Console.WriteLine("Please enter amount to deposit: ");
+                decimal amount = Convert.ToDecimal(Console.ReadLine());
+                var context = new StrategyContext();
+                context.SetBalanceStrategy(new StrategyDeposit());
+                context.AccountAction(amount);
+                Console.ReadLine();
+            }
+            catch (Exception)
+            {
+                Singleton.Instance.ErrorMessage();
+                Console.ReadLine();
+            }
+            //Console.WriteLine("Please enter amount to deposit: ");
+            //decimal amount = Convert.ToDecimal(Console.ReadLine());
+            //var context = new StrategyContext();
+            //context.SetBalanceStrategy(new StrategyDeposit());
+            //context.AccountAction(amount);
+            //Console.ReadLine();
         }
-
     }
 }
